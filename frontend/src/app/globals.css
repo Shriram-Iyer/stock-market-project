@@ -1,0 +1,572 @@
+@import "tailwindcss";
+
+/* ========================================
+   PROFESSIONAL STOCK MARKET THEME
+   Inspired by Moneycontrol, Zerodha, TradingView
+   ======================================== */
+
+:root {
+    /* Background colors - Dark Mode (default) */
+    --bg-dark: #0a0e17;
+    --bg-card: #131722;
+    --bg-elevated: #1e222d;
+    --bg-hover: #2a2e39;
+    --bg: #0a0e17;
+
+    /* Text colors */
+    --text-primary: #d1d4dc;
+    --text-secondary: #787b86;
+    --text-muted: #5d606b;
+
+    /* Accent colors */
+    --green: #26a69a;
+    --green-bg: rgba(38, 166, 154, 0.12);
+    --red: #ef5350;
+    --red-bg: rgba(239, 83, 80, 0.12);
+    --blue: #2962ff;
+    --blue-bg: rgba(41, 98, 255, 0.12);
+    --yellow: #ffeb3b;
+
+    /* Border */
+    --border: #2a2e39;
+}
+
+/* Light Theme */
+[data-theme="light"] {
+    --bg-dark: #f5f5f5;
+    --bg-card: #ffffff;
+    --bg-elevated: #f0f3f6;
+    --bg-hover: #e8eaed;
+    --bg: #f5f5f5;
+
+    --text-primary: #1e222d;
+    --text-secondary: #5d606b;
+    --text-muted: #787b86;
+
+    --green: #089981;
+    --green-bg: rgba(8, 153, 129, 0.12);
+    --red: #f23645;
+    --red-bg: rgba(242, 54, 69, 0.12);
+    --blue: #2962ff;
+    --blue-bg: rgba(41, 98, 255, 0.12);
+    --yellow: #f7931a;
+
+    --border: #e0e3eb;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Hidden scrollbar utility - keeps scroll but hides bar */
+.scrollbar-hidden {
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE/Edge */
+}
+
+.scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+    /* Chrome/Safari/Opera */
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, 'Trebuchet MS', Roboto, Ubuntu, sans-serif;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* ========================================
+   NAVIGATION BAR
+   ======================================== */
+.navbar {
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--blue);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 4px;
+    margin-left: 32px;
+}
+
+.nav-link {
+    padding: 8px 16px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 4px;
+    transition: all 0.15s;
+}
+
+.nav-link:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+}
+
+.nav-link.active {
+    background: var(--blue-bg);
+    color: var(--blue);
+}
+
+/* ========================================
+   MARKET TICKER (TOP BAR)
+   ======================================== */
+.market-ticker {
+    background: var(--bg-card);
+    border-bottom: 1px solid var(--border);
+    padding: 8px 24px;
+    display: flex;
+    gap: 32px;
+    overflow-x: auto;
+}
+
+.ticker-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    white-space: nowrap;
+}
+
+.ticker-name {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.ticker-price {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.ticker-change {
+    font-size: 0.75rem;
+    padding: 2px 6px;
+    border-radius: 3px;
+}
+
+.ticker-change.positive {
+    background: var(--green-bg);
+    color: var(--green);
+}
+
+.ticker-change.negative {
+    background: var(--red-bg);
+    color: var(--red);
+}
+
+/* ========================================
+   CARDS & CONTAINERS
+   ======================================== */
+.card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+}
+
+.card-header {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.card-body {
+    padding: 16px;
+}
+
+.glass-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 16px;
+}
+
+/* ========================================
+   STOCK TABLE
+   ======================================== */
+.stock-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.stock-table th {
+    padding: 12px 16px;
+    text-align: left;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-elevated);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.stock-table td {
+    padding: 12px 16px;
+    font-size: 0.875rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.stock-table tr:hover {
+    background: var(--bg-hover);
+}
+
+.stock-table .ticker {
+    font-weight: 600;
+    color: var(--blue);
+}
+
+.stock-table .price {
+    font-weight: 600;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+}
+
+.stock-table .change-positive {
+    color: var(--green);
+}
+
+.stock-table .change-negative {
+    color: var(--red);
+}
+
+/* ========================================
+   DATA TABLE (Portfolio, etc.)
+   ======================================== */
+.data-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.data-table th {
+    padding: 16px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    text-align: left;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid var(--border);
+    background: var(--bg-elevated);
+}
+
+.data-table td {
+    padding: 18px 20px;
+    font-size: 0.95rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+}
+
+.data-table tbody tr {
+    transition: all 0.2s ease;
+}
+
+.data-table tbody tr:hover {
+    background: var(--bg-hover);
+}
+
+.data-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* ========================================
+   STOCK CARD (Grid View)
+   ======================================== */
+.stock-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 16px;
+    transition: all 0.15s;
+    cursor: pointer;
+}
+
+.stock-card:hover {
+    background: var(--bg-elevated);
+    border-color: var(--blue);
+}
+
+.stock-card .ticker {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.stock-card .company {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+}
+
+.stock-card .price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    margin-bottom: 4px;
+}
+
+.stock-card .change {
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.stock-card .metrics {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.stock-card .metric {
+    font-size: 0.75rem;
+}
+
+.stock-card .metric-label {
+    color: var(--text-muted);
+}
+
+.stock-card .metric-value {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+/* ========================================
+   PRICE COLORS
+   ======================================== */
+.price-positive,
+.text-green {
+    color: var(--green);
+}
+
+.price-negative,
+.text-red {
+    color: var(--red);
+}
+
+.bg-green {
+    background: var(--green-bg);
+}
+
+.bg-red {
+    background: var(--red-bg);
+}
+
+/* ========================================
+   BUTTONS - Premium Flashy Design
+   ======================================== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #2962ff 0%, #1e88e5 50%, #42a5f5 100%);
+    color: white;
+    border: none;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #42a5f5 0%, #1e88e5 50%, #2962ff 100%);
+    box-shadow: 0 6px 25px rgba(41, 98, 255, 0.4);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, var(--bg-elevated) 0%, var(--bg-hover) 100%);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(135deg, var(--bg-hover) 0%, var(--bg-elevated) 100%);
+    border-color: var(--blue);
+}
+
+.btn-success {
+    background: linear-gradient(135deg, #26a69a 0%, #00897b 50%, #4db6ac 100%);
+    color: white;
+}
+
+.btn-success:hover {
+    background: linear-gradient(135deg, #4db6ac 0%, #00897b 50%, #26a69a 100%);
+    box-shadow: 0 6px 25px rgba(38, 166, 154, 0.4);
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #ef5350 0%, #e53935 50%, #f44336 100%);
+    color: white;
+}
+
+.btn-danger:hover {
+    background: linear-gradient(135deg, #f44336 0%, #e53935 50%, #ef5350 100%);
+    box-shadow: 0 6px 25px rgba(239, 83, 80, 0.4);
+}
+
+.btn-sm {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+    border-radius: 8px;
+}
+
+/* ========================================
+   FORM INPUTS - Premium Style
+   ======================================== */
+.input-field {
+    width: 100%;
+    padding: 14px 18px;
+    background: var(--bg-elevated);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    transition: all 0.25s ease;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(41, 98, 255, 0.2);
+}
+
+.input-field::placeholder {
+    color: var(--text-muted);
+}
+
+/* ========================================
+   CHARTS
+   ======================================== */
+.chart-container {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 16px;
+}
+
+/* ========================================
+   STATS GRID
+   ======================================== */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px;
+}
+
+.stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 16px;
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ========================================
+   LOADING & UTILITIES
+   ======================================== */
+.spinner {
+    width: 32px;
+    height: 32px;
+    border: 3px solid var(--border);
+    border-top-color: var(--blue);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0 16px;
+    }
+
+    .market-ticker {
+        padding: 8px 16px;
+        gap: 16px;
+    }
+
+    .container {
+        padding: 0 16px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+}
